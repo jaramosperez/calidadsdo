@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %} {% load static %} {% block title %}CAMBIAR
+ENCARGADO DE CARACTERISTICA{% endblock %} {% block content %}
+<div class="ui raised very padded text container segment">
+  <form class="ui form" action="" method="post">
+    {% csrf_token %}
+    <div class="field">
+      {{ form.as_p }}
+      <br />
+      <button class="ui button small blue" type="submit">
+        <i class="icon save"></i>
+        CAMBIAR
+      </button>
+      <a class="ui button small red" href="{% url 'caracteristicas:caracteristica' caracteristica.id caracteristica.nombre|slugify%}">
+        <i class="close icon"></i>
+        VOLVER SIN CAMBIAR
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

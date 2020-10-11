@@ -4,11 +4,21 @@
 {% block content %}
 <div>
   <h2 class="ui header floated left">
-    <i class="medkit icon"></i>
+    <i class="clipboard check icon"></i>
     <div class="content">{{ caracteristica.nombre }}
-      <div class="sub header">Listado Indicadores</div>
+      <div class="ui grey large label">LISTADO DE INDICADORES</div>
     </div>
   </h2>
+     {% if request.user.is_staff %}
+  <a class="ui right floated mini red labeled icon button"
+     data-tooltip="Ingresar Indicador"
+     data-inverted=""
+     data-position="bottom center"
+     href="#">
+    <i class="copy outline icon"></i>
+    INGRESAR INDICADOR
+  </a>
+  {% endif %}
   <div class="ui divider clearing"></div>
 
   <div>
@@ -24,8 +34,8 @@
       <tbody>
       {% for documento in documento_list %}
       <tr>
-        <td style="width: 30%">
-          <a class="ui mini icon olive button"
+        <td style="width: 26%">
+          <a class="ui mini icon teal button"
              href="#"
              data-tooltip="Ver Documentos"
              data-inverted=""
@@ -66,5 +76,6 @@
             },
         });
     });
+    
 </script>
 {% endblock scripts %}

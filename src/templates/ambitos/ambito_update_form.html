@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %} {% load static %} {% block title %}CAMBIAR
+ENCARGADO DE AMBITO{% endblock %} {% block content %}
+<div class="ui raised very padded text container segment">
+  <form class="ui form" action="" method="post">
+    {% csrf_token %}
+    <div class="field">
+      {{ form.as_p }}
+      <br />
+      <button class="ui button blue" type="submit">
+        <i class="icon save"></i>
+        CAMBIAR
+      </button>
+      <a class="ui button red" href="{% url 'ambitos:ambito' ambito.id ambito.nombre|slugify %}">
+        <i class="reply icon"></i>
+        VOLVER SIN CAMBIAR
+      </a>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -4,78 +4,98 @@
 {% block content %}
 <div>
   <h2 class="ui header floated left">
-    <i class="users icon"></i>
+    <i class="medkit icon"></i>
     <div class="content">{{ caracteristica.nombre }}
-      <div class="ui grey large label">LISTADO DE CARACTERÍSTICAS DEL ÁMBITO {{ambito.nombre}}</div>
+      <div class="ui grey large label">DOCUMENTOS E INFORMACIÓN DE LA CARACTERISTICA {{caracteristica.nombre}}</div>
     </div>
   </h2>
       {% if request.user.is_staff %}
-  <a class="ui right floated mini brown labeled icon button"
-     data-tooltip="Cambiar encargado de ámbito"
+  <a class="ui right floated mini violet labeled icon button"
+     data-tooltip="Cambiar encargado de característica"
      data-inverted=""
      data-position="bottom center"
-     href="{% url 'ambitos:actualizar' ambito.id ambito.nombre|slugify %}">
+     href="#">
     <i class="user icon"></i>
-    CAMBIAR ENCARGADO DE ÁMBITO
+    CAMBIAR ENCARGADO DE CARACTERÍSTICA
   </a>
-    {% endif %}
+  {% endif %}
+    {% if request.user.is_staff %}
+  <a class="ui right floated mini blue labeled icon button"
+     data-tooltip="Ingresar un documento nuevo"
+     data-inverted=""
+     data-position="bottom center"
+     href="#">
+    <i class="user icon"></i>
+    INGRESAR NUEVO DOCUMENTO
+  </a>
+  {% endif %}
+   {% if request.user.is_staff %}
+  <a class="ui right floated mini red labeled icon button"
+     data-tooltip="Ingresar Indicador"
+     data-inverted=""
+     data-position="bottom center"
+     href="#">
+    <i class="user icon"></i>
+    INGRESAR INDICADOR
+  </a>
+  {% endif %}
   <div class="ui divider clearing"></div>
 
 <div class="ui list">
   <div class="item">
     <div class="header">Descripción</div>
-    {{ambito.descripcion|safe}}
+    {{caracteristica.denominacion|safe}}
   </div>
   <div class="item">
     <div class="header">Encargado/a</div>
-    {{ambito.funcionario}}
+    {{caracteristica.funcionario}}
   </div>
   <div class="item">
     <div class="header">Subrogante</div>
-    {{ambito.funcionario}}
+    {{caracteristica.funcionario}}
   </div>
   <div class="item">
     <div class="header">Fecha última reunión</div>
-    {{ambito.updated}}
+    {{caracteristica.updated}}
   </div>
 </div>
   <div class="ui divider clearing"></div>
-  <table id="caracteristicas" class="ui celled very compact table bordered striped">
+  <table id="documentos" class="ui celled very compact table bordered striped">
     <thead>
     <tr>
       <th>ACCIONES</th>
-      <th>NOMBRE CARACTERÍSTICA</th>
-      <th>ENCARAGADO</th>
-      <th>OBLOGATORIA</th>
+      <th>NOMBRE DOCUMENTO</th>
+      <th>TIPO DOCUMENTO</th>
+      <th>FECHA REALIZACIÓN</th>
     </tr>
     </thead>
     <tbody>
-    {% for caracteristica in caracteristica_listado %}
+    {% for documento in documento_listado %}
     <tr>
-      <td style="width: 27%">
+      <td style="width: 26%">
         <a class="ui mini icon teal button"
-           href="{% url 'caracteristicas:caracteristica' caracteristica.id caracteristica.nombre|slugify %}"
+           href="#"
            data-tooltip="Ver Documentos"
            data-inverted=""
            data-position="bottom center">
           <i class="clipboard list icon"></i>
-          Ver Documentación
+          DESCARGAR DOCUMENTO
         </a>
 
         {% if request.user.is_staff %}
-        <a class="ui mini icon violet button"
-           href="{% url 'caracteristicas:actualizar' caracteristica.id caracteristica.nombre|slugify %}"
+        <a class="ui mini icon grey button"
+           href="#"
            data-tooltip="Cambio de Encargado"
            data-inverted=""
            data-position="bottom center">
-          <i class="user md icon"></i>
-          Cambio de Encargado
+          <i class="edit icon"></i>
+          EDITAR DOCUMENTO
         </a>
         {% endif %}
       </td>
-      <td>{{ caracteristica.nombre }}</td>
-      <td>{{ caracteristica.funcionario | upper }}</td>
-      <td>{{ caracteristica.tipo | upper }}</td>
+      <td>{{ documento.nombre }}</td>
+      <td>{{ documento.tipo_documento | upper }}</td>
+      <td>{{ documento.vigencia | upper }}</td>
     </tr>
     {% endfor %}
   </table>
@@ -88,7 +108,7 @@
 <script src="{% static 'js/dataTables.semanticui.min.js' %}"></script>
 <script>
     $(document).ready(function () {
-        $('#caracteristicas').DataTable({
+        $('#documentos').DataTable({
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
             },

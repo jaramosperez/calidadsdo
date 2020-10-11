@@ -14,16 +14,6 @@
       </div>
     </div>
   </h2>
-  {% if request.user.is_staff %}
-  <a class="ui right floated mini teal labeled icon button"
-     data-tooltip="Ingresar un nuevo funcionario"
-     data-inverted=""
-     data-position="bottom center"
-     href="#">
-    <i class="user icon"></i>
-    INGRESAR ÁMBITO NUEVO
-  </a>
-  {% endif %}
   <div class="ui divider clearing"></div>
   <div>
     <h3 class="ui header floated left">
@@ -56,7 +46,7 @@
 
             {% if request.user.is_staff %}
             <a class="ui mini icon brown button"
-               href="#"
+               href="{% url 'ambitos:actualizar' ambito.id ambito.nombre|slugify %}"
                data-tooltip="Cambio de Encargado"
                data-inverted=""
                data-position="bottom center">
@@ -86,5 +76,10 @@
             },
         });
     });
+</script>
+<script>
+$('.small.modal')
+  .modal('show')
+;
 </script>
 {% endblock scripts %}
