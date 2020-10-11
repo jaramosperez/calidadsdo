@@ -4,6 +4,7 @@ from django.contrib import admin
 from django.urls import path, include
 from ambitos.urls import ambitos_patterns
 from caracteristicas.urls import caracteristicas_patterns
+from documentos.urls import documentos_patterns
 
 
 urlpatterns = [
@@ -14,6 +15,7 @@ urlpatterns = [
     # PATH APPS
     path('', include('core.urls')),
     path('ambitos/', include(ambitos_patterns)),
+    path('documentos/', include(documentos_patterns)),
     path('caracteristicas/', include(caracteristicas_patterns)),
 ]
 

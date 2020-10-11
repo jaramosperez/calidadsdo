@@ -1,7 +1,7 @@
 <div class="ui fixed inverted menu">
         <a class="{% if request.path == '/' %}active{% endif %} item" href="{% url 'home' %}">CALIDAD SOL DE ORIENTE</a>
         <a class="ui {% if request.path|slice:":9" == '/ambitos/' %}active{% endif %} item" href="{% url 'ambitos:ambitos' %}">Ambitos</a>
-        <a class="ui {% if request.path|slice:":9" == '/ambitos/' %}active{% endif %} item" href="{% url 'ambitos:ambitos' %}">Indicadores</a>
+        <a class="ui {% if request.path|slice:":9" == '/documentos/' %}active{% endif %} item" href="{% url 'documentos:documentos' %}">Indicadores</a>
         <div class="right menu">
             {% if not request.user.is_authenticated %}
             <a class="ui item" href="{% url 'login' %}">Acceder</a>

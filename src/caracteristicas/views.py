@@ -19,9 +19,9 @@ class CaracteristicaDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(CaracteristicaDetail, self).get_context_data(**kwargs)
-        documento_listado = Documento.objects.filter(
+        caracteristica_listado = Documento.objects.filter(
             caracteristica_id=self.object.id
             )
-        context['documento_listado'] = documento_listado
+        context['caracteristica_listado'] = caracteristica_listado
 
         return context

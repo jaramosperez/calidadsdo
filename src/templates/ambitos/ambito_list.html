@@ -15,7 +15,7 @@
             </div>
         </h2>
         {% if request.user.is_staff %}
-            <a class="ui right floated small teal labeled icon button"
+            <a class="ui right floated mini teal labeled icon button"
                data-tooltip="Ingresar un nuevo funcionario"
                data-inverted=""
                data-position="bottom center"
@@ -32,7 +32,7 @@
                 </div>
             </h3>
             <div>
-                <table id="funcionarios" class="ui celled very compact table bordered striped">
+                <table id="ambitos" class="ui celled very compact table bordered striped">
                     <thead>
                     <tr>
                         <th>ACCIONES</th>
@@ -80,7 +80,7 @@
     <script src="{% static 'js/dataTables.semanticui.min.js' %}"></script>
     <script>
         $(document).ready(function () {
-            $('#funcionarios').DataTable({
+            $('#ambitos').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
                 },

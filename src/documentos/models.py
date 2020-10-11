@@ -31,7 +31,7 @@ class Documento(models.Model):
         )
     archivo = models.FileField(
         verbose_name='Archivo', null=True, blank=True, upload_to='documentos'
-        )    
+        )
     caracteristica = models.ForeignKey(
         Caracteristica, verbose_name="Característica", on_delete=models.CASCADE
         )
@@ -51,7 +51,7 @@ class Documento(models.Model):
     version = models.PositiveIntegerField(
         verbose_name='Versión del documento'
         )
-    vigencia = models.DateField(verbose_name="Fecha de vigencia")
+    vigencia = models.DateField(verbose_name="Fecha de realización")
 
     def __str__(self):
         return self.nombre
