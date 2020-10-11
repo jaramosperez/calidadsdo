@@ -2,69 +2,69 @@
 {% load static %}
 {% block title %}{{ caracteristica.nombre }}{% endblock %}
 {% block content %}
-    <div>
-        <h2 class="ui header floated left">
-            <i class="medkit icon"></i>
-            <div class="content">{{ caracteristica.nombre }}
-                <div class="sub header">Listado Indicadores</div>
-            </div>
-        </h2>
-       <div class="ui divider clearing"></div>
-
-            <div>
-                <table id="documentos" class="ui celled very compact table bordered striped">
-                    <thead>
-                    <tr>
-                        <th>ACCIONES</th>
-                        <th>CARACTERÍSTICA</th>
-                        <th>FECHA</th>
-                        <th>NOMBRE INDICADOR</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for documento in documento_list %}
-                        <tr>
-                            <td style="width: 30%">
-                                <a class="ui mini icon olive button"
-                                   href="#"
-                                   data-tooltip="Ver Documentos"
-                                   data-inverted=""
-                                   data-position="bottom center">
-                                    <i class="download icon"></i>
-                                    Descargar Archivo
-                                </a>
-
-                                {% if request.user.is_staff %}
-                                    <a class="ui mini icon grey button"
-                                       href="#"
-                                       data-tooltip="Cambio de Encargado"
-                                       data-inverted=""
-                                       data-position="bottom center">
-                                        <i class="edit icon"></i>
-                                        Modificar Documento
-                                    </a>
-                                {% endif %}
-                            </td>
-                            <td>{{ documento.caracteristica }}</td>
-                            <td>{{ documento.vigencia  | upper }}</td>
-                            <td>{{ documento.nombre | upper }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
+<div>
+  <h2 class="ui header floated left">
+    <i class="medkit icon"></i>
+    <div class="content">{{ caracteristica.nombre }}
+      <div class="sub header">Listado Indicadores</div>
     </div>
+  </h2>
+  <div class="ui divider clearing"></div>
+
+  <div>
+    <table id="documentos" class="ui celled very compact table bordered striped">
+      <thead>
+      <tr>
+        <th>ACCIONES</th>
+        <th>CARACTERÍSTICA</th>
+        <th>FECHA</th>
+        <th>NOMBRE INDICADOR</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for documento in documento_list %}
+      <tr>
+        <td style="width: 30%">
+          <a class="ui mini icon olive button"
+             href="#"
+             data-tooltip="Ver Documentos"
+             data-inverted=""
+             data-position="bottom center">
+            <i class="download icon"></i>
+            Descargar Archivo
+          </a>
+
+          {% if request.user.is_staff %}
+          <a class="ui mini icon grey button"
+             href="#"
+             data-tooltip="Cambio de Encargado"
+             data-inverted=""
+             data-position="bottom center">
+            <i class="edit icon"></i>
+            Modificar Documento
+          </a>
+          {% endif %}
+        </td>
+        <td>{{ documento.caracteristica }}</td>
+        <td>{{ documento.vigencia | upper }}</td>
+        <td>{{ documento.nombre | upper }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+</div>
 {% endblock %}
 {% block scripts %}
-    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
-    <script src="{% static 'js/dataTables.semanticui.min.js' %}"></script>
-    <script>
-        $(document).ready(function () {
-            $('#documentos').DataTable({
-                "language": {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                },
-            });
+<script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'js/dataTables.semanticui.min.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        $('#documentos').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            },
         });
-    </script>
+    });
+</script>
 {% endblock scripts %}

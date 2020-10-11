@@ -2,43 +2,43 @@
 {% load static %}
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>DOCUMENTACIÓN 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>DOCUMENTACIÓN
     {% block title %}
     {% endblock %}
-    </title>
-    
-    <!-- Estilos -->
-    <link href="{% static 'semantic/semantic-lumen.css' %}" rel="stylesheet">
-    <!-- Estilos -->
-    {% block link %}
-    {% endblock link %}
+  </title>
+
+  <!-- Estilos -->
+  <link href="{% static 'semantic/semantic-lumen.css' %}" rel="stylesheet">
+  <!-- Estilos -->
+  {% block link %}
+  {% endblock link %}
 </head>
 <body>
 <!-- Navegación -->
 {% include 'core/navbar.html'%}
 <!-- Navegación -->
 <div style="padding: 55px 0 30px;">
-    
-
-    <!-- Contenido -->
-    <div class="ui main container">
-        {% block content %}
-        {% endblock %}
-    </div>
-    <!-- Contenido -->
 
 
-    <!-- Footer -->
-    {% include 'core/footer.html' %}
-    <!-- Footer -->
+  <!-- Contenido -->
+  <div class="ui main container">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <!-- Contenido -->
 
-    <!-- Javascript -->
-    {% include 'core/scripts.html' %}
-    {% block scripts %}
-    {% endblock scripts %}
-    <!-- Javascript -->
+
+  <!-- Footer -->
+  {% include 'core/footer.html' %}
+  <!-- Footer -->
+
+  <!-- Javascript -->
+  {% include 'core/scripts.html' %}
+  {% block scripts %}
+  {% endblock scripts %}
+  <!-- Javascript -->
 
 </div>
 </body>
