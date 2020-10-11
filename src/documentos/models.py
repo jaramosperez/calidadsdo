@@ -29,6 +29,9 @@ class Documento(models.Model):
     nombre = models.CharField(
         max_length=255, verbose_name="Nombre del documento"
         )
+    archivo = models.FileField(
+        verbose_name='Archivo', null=True, blank=True, upload_to='documentos'
+        )    
     caracteristica = models.ForeignKey(
         Caracteristica, verbose_name="Característica", on_delete=models.CASCADE
         )
