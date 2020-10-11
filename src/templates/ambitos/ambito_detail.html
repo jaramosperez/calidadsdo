@@ -19,6 +19,16 @@
     CAMBIAR ENCARGADO DE ÁMBITO
   </a>
     {% endif %}
+          {% if request.user.is_staff %}
+  <a class="ui right floated mini blue labeled icon button"
+     data-tooltip="Cambiar el subrogante del encargado de ámbito"
+     data-inverted=""
+     data-position="bottom center"
+     href="{% url 'ambitos:actualizar' ambito.id ambito.nombre|slugify %}">
+    <i class="user icon"></i>
+    CAMBIAR SUBROGANTE
+  </a>
+    {% endif %}
   <div class="ui divider clearing"></div>
 
 <div class="ui list">

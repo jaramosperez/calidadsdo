@@ -9,7 +9,14 @@ class Caracteristica(models.Model):
         verbose_name='Nombre de Caracteristica', max_length=100
         )
     funcionario = models.ForeignKey(
-        Funcionario, verbose_name="Encargado", on_delete=models.CASCADE
+        Funcionario, verbose_name="Encargado", on_delete=models.CASCADE,
+        blank=True, null=True,
+        related_name='caracteristica_funcionario'
+        )
+    subrogante = models.ForeignKey(
+        Funcionario, verbose_name="Subrogante", on_delete=models.CASCADE,
+        blank=True, null=True,
+        related_name='caracteristica_subrogante'
         )
     ambito = models.ForeignKey(
         Ambito, verbose_name="Ámbito", on_delete=models.CASCADE

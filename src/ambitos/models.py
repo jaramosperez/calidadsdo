@@ -6,7 +6,14 @@ from funcionarios.models import Funcionario
 class Ambito(models.Model):
     nombre = models.CharField(verbose_name='Nombre de Ámbito', max_length=100)
     funcionario = models.ForeignKey(
-        Funcionario, verbose_name="Encargado", on_delete=models.CASCADE
+        Funcionario, verbose_name="Encargado", on_delete=models.CASCADE,
+        blank=True, null=True,
+        related_name='ambito_funcionario'
+        )
+    subrogante = models.ForeignKey(
+        Funcionario, verbose_name="Subrogante", on_delete=models.CASCADE,
+        blank=True, null=True,
+        related_name='ambito_subrogante'
         )
     descripcion = RichTextField(verbose_name='Descripción')
     sigla = models.CharField(

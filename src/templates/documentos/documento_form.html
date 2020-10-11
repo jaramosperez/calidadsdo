@@ -1,20 +1,25 @@
-{% extends 'core/base.html' %} {% load static %} {% block title %}CAMBIAR
-ENCARGADO DE AMBITO{% endblock %} {% block content %}
+{% extends 'core/base.html' %} {% load static %} {% block title %}INGRESAR NUEVO DOCUMENTO
+{% endblock %} {% block content %}
 <div class="ui raised very padded text container segment">
   <form class="ui form" action="" method="post">
     {% csrf_token %}
-    <div class="field">
+
       {{ form.as_p }}
       <br />
       <button class="ui button small blue" type="submit">
         <i class="icon save"></i>
-        CAMBIAR
+        INGRESAR ARCHIVO
       </button>
-      <a class="ui button small red" href="{% url 'ambitos:ambito' ambito.id ambito.nombre|slugify %}">
-        <i class="reply icon"></i>
+      <a class="ui button small red" href="{% url 'documentos:documentos' %}">
+        <i class="close icon"></i>
         VOLVER SIN CAMBIAR
       </a>
-    </div>
   </form>
 </div>
 {% endblock %}
+
+<script>
+$('#calendario').calendar({
+  type: 'date'
+});
+</script>

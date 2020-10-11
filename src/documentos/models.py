@@ -48,7 +48,7 @@ class Documento(models.Model):
     updated = models.DateTimeField(
         auto_now=True, verbose_name='Fecha de edición'
         )
-    version = models.PositiveIntegerField(
+    version = models.FloatField(
         verbose_name='Versión del documento'
         )
     vigencia = models.DateField(verbose_name="Fecha de realización")
