@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Caraterísticas{% endblock %}
+{% block content %}
+    <div>
+        <h2 class="ui header floated left">
+            <i class="medkit icon"></i>
+            <div class="content">Caracteristicas
+                <div class="sub header">
+                    Listado Caracteristica para la acreditación en Salud: Atención Abierta
+                </div>
+            </div>
+        </h2>
+        <div class="ui divider clearing"></div>
+        <div class="ui cards">
+            {% for caracteristica in caracteristica_list %}
+                <div class="card">
+                    <div class="content">
+                        <div class="header">{{ caracteristica.nombre }}</div>
+                        <div class="description">
+                            {{ caracteristica.descripcion|safe }}
+                        </div>
+                    </div>
+                <div class="extra content">
+                        <div class="right floated author">
+                            <strong style="color: black">
+                                {% if caracteristica.encargado != null %}
+                                    {{ caracteristica.encargado }}
+                                {% else %}
+                                    Sin encargado
+                                {% endif %}
+                            </strong>
+                        </div>
+                    </div>
+                    <a 
+                    href="{% url 'caracteristicas:caracteristica' caracteristica.id caracteristica.nombre|slugify %}"
+                    class="ui bottom secondary attached button">
+                        <i class="sticky note icon"></i>
+                        Ver Documentos:
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}{{ caracteristica.nombre }}{% endblock %}
+{% block content %}
+    <div>
+        <h2 class="ui header floated left">
+            <i class="medkit icon"></i>
+            <div class="content">{{ caracteristica.nombre }}
+                <div class="sub header">Listado Caracteristicas</div>
+            </div>
+        </h2>
+       <div class="ui divider clearing"></div>
+       <div class="ui raised segment">
+            {{ ambito.descripcion }}
+        </div>
+        <div>
+            <h3 class="ui header floated left">
+                <div class="ui content">
+
+                </div>
+            </h3>
+            <div>
+                <table id="funcionarios" class="ui celled very compact table bordered striped">
+                    <thead>
+                    <tr>
+                        <th>ACCIONES</th>
+                        <th>NOMBRE CARACTERÍSTICA</th>
+                        <th>ENCARAGADO</th>
+                        <th>DENOMINACIÓN</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for ambito in ambito_list %}
+                        <tr>
+                            <td style="width: 27%">
+                                <a class="ui mini icon primary button"
+                                   href="#"
+                                   data-tooltip="Ver Características"
+                                   data-inverted=""
+                                   data-position="bottom center">
+                                    <i class="list alternate outline icon"></i>
+                                    Ver Características
+                                </a>
+
+                                {% if request.user.is_staff %}
+                                    <a class="ui mini icon brown button"
+                                       href="#"
+                                       data-tooltip="Cambio de Encargado"
+                                       data-inverted=""
+                                       data-position="bottom center">
+                                        <i class="user md icon"></i>
+                                        Cambio de Encargado
+                                    </a>
+                                {% endif %}
+                            </td>
+                            <td>{{ ambito.nombre }}</td>
+                            <td>{{ ambito.funcionario | upper }}</td>
+                            <td>{{ ambito.sigla | upper }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'js/dataTables.semanticui.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#funcionarios').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+            });
+        });
+    </script>
+{% endblock scripts %}

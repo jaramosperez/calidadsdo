@@ -1,0 +1,90 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Ámbitos{% endblock %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'base/css/dataTables.semanticui.min.css' %}">
+{% endblock link%}
+{% block content %}
+    <div>
+        <h2 class="ui header floated left">
+            <i class="medkit icon"></i>
+            <div class="ui content">Ámbitos
+                <div class="sub header">
+                    Listado Ámbitos para la acreditación en Salud: Atención Abierta
+                </div>
+            </div>
+        </h2>
+        {% if request.user.is_staff %}
+            <a class="ui right floated small teal labeled icon button"
+               data-tooltip="Ingresar un nuevo funcionario"
+               data-inverted=""
+               data-position="bottom center"
+               href="#">
+                <i class="user icon"></i>
+                INGRESAR ÁMBITO NUEVO
+            </a>
+        {% endif %}
+        <div class="ui divider clearing"></div>
+        <div>
+            <h3 class="ui header floated left">
+                <div class="ui content">
+
+                </div>
+            </h3>
+            <div>
+                <table id="funcionarios" class="ui celled very compact table bordered striped">
+                    <thead>
+                    <tr>
+                        <th>ACCIONES</th>
+                        <th>NOMBRE AMBITO</th>
+                        <th>ENCARAGADO</th>
+                        <th>DENOMINACIÓN</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for ambito in ambito_list %}
+                        <tr>
+                            <td style="width: 27%">
+                                <a class="ui mini icon primary button"
+                                   href="{% url 'ambitos:ambito' ambito.id ambito.nombre|slugify %}"
+                                   data-tooltip="Ver Características"
+                                   data-inverted=""
+                                   data-position="bottom center">
+                                    <i class="list alternate outline icon"></i>
+                                    Ver Características
+                                </a>
+
+                                {% if request.user.is_staff %}
+                                    <a class="ui mini icon brown button"
+                                       href="#"
+                                       data-tooltip="Cambio de Encargado"
+                                       data-inverted=""
+                                       data-position="bottom center">
+                                        <i class="user md icon"></i>
+                                        Cambio de Encargado
+                                    </a>
+                                {% endif %}
+                            </td>
+                            <td>{{ ambito.nombre }}</td>
+                            <td>{{ ambito.funcionario | upper }}</td>
+                            <td>{{ ambito.sigla | upper }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'js/dataTables.semanticui.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#funcionarios').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+            });
+        });
+    </script>
+{% endblock scripts %}
