@@ -1,0 +1,12 @@
+<div class="ui fixed inverted menu">
+    <a class="{% if request.path == '/' %}active{% endif %} item" href="#">CALIDAD SOL DE ORIENTE</a>
+    <a class="ui {% if request.path|slice:":9" == '/ambitos/' %}active{% endif %} item" href="#">Ambitos</a>
+    <a class="ui {% if request.path|slice:":9" == '/ambitos/' %}active{% endif %} item" href="#">Indicadores</a>
+        <div class="right menu">
+            {% if not request.user.is_authenticated %}
+            <a class="ui item" href="#">Acceder</a>
+                {% else %}
+                <a class="ui item" href="#">Salir</a>
+            {% endif %}
+        </div>
+    </div>
