@@ -2,11 +2,6 @@
 
 Sistema para control y respaldo de la documentación relacionada a los procesos de Calidad del CESFAM Sol de Oriente.
 
-## Licensing
-
-See the [LICENSE](LICENSE) file for licensing information as it pertains to
-files in this repository.
-
 ## Software stack
 
 - Ubuntu/Debian/CentOS/RHEL/OpenSUSE
@@ -29,3 +24,9 @@ files in this repository.
 - Ámbitos
 - Características
 - Documentos [Indicadores - Protocolos - Nombramientos]
+
+
+## Licensing
+
+See the [LICENSE](LICENSE) file for licensing information as it pertains to
+files in this repository.
