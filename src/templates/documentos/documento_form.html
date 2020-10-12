@@ -1,25 +1,23 @@
-{% extends 'core/base.html' %} {% load static %} {% block title %}INGRESAR NUEVO DOCUMENTO
-{% endblock %} {% block content %}
+{% extends 'core/base.html' %} {% load static %} {% block title %}INGRESAR NUEVO
+DOCUMENTO {% endblock %} {% block content %}
 <div class="ui raised very padded text container segment">
   <form class="ui form" action="" method="post">
-    {% csrf_token %}
-
-      {{ form.as_p }}
-      <br />
-      <button class="ui button small blue" type="submit">
-        <i class="icon save"></i>
-        INGRESAR ARCHIVO
-      </button>
-      <a class="ui button small red" href="{% url 'documentos:documentos' %}">
-        <i class="close icon"></i>
-        VOLVER SIN CAMBIAR
-      </a>
+    {% csrf_token %} {{ form.as_p }}
+    <br />
+    <button class="ui button small blue" type="submit">
+      <i class="icon save"></i>
+      INGRESAR ARCHIVO
+    </button>
+    <a class="ui button small red" href="{% url 'documentos:documentos' %}">
+      <i class="close icon"></i>
+      VOLVER SIN INGRESAR
+    </a>
   </form>
 </div>
 {% endblock %}
 
 <script>
-$('#calendario').calendar({
-  type: 'date'
-});
+  $("#calendario").calendar({
+    type: "date",
+  });
 </script>

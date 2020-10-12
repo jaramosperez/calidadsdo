@@ -4,6 +4,16 @@ from funcionarios.models import Funcionario
 
 
 class Ambito(models.Model):
+    """
+    Clase para crear Ambitos.
+    Contiene los siguientes atributos.
+    nombre = Nombre del ámbito.
+    funcionario = Funcionario encargado del ámbito.
+    subrogante = Funcionario subrogante del ámbito.
+    descripcion = Descripción del ámbito según manual.
+    sigla = Sigla con la que se identifica el ámbito.
+    numero = Número en orden del ámbito en el manual.
+    """
     nombre = models.CharField(verbose_name='Nombre de Ámbito', max_length=100)
     funcionario = models.ForeignKey(
         Funcionario, verbose_name="Encargado", on_delete=models.CASCADE,

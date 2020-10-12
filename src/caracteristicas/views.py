@@ -1,14 +1,12 @@
 from .models import Caracteristica
-from django.urls import reverse_lazy
-from documentos.models import Documento
 from .forms import CaracteristicaFormUpdate
+from documentos.models import Documento
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView
 from django.views.generic.detail import DetailView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-
-# Create your views here.
 
 
 @method_decorator(login_required(), name='dispatch')
