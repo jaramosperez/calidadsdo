@@ -18,17 +18,17 @@ class DocumentoForm(forms.ModelForm):
             'vigencia'
             ]
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'ui input'}),
-            'archivo': forms.FileInput(attrs={'class': 'inputfile', 'type': 'file'}),
+            'nombre': forms.TextInput(attrs={'class': 'ui small input'}),
+            'archivo': forms.FileInput(attrs={'class': 'inputfile small', 'type': 'file'}),
             'caracteristica': forms.Select(
-                attrs={'class': 'ui selection dropdown'}
+                attrs={'class': 'ui small selection dropdown'}
                 ),
             'funcionario': forms.Select(
-                attrs={'class': 'ui selection dropdown'}
+                attrs={'class': 'ui small selection dropdown'}
                 ),
             'tipo_documento': forms.Select(
-                attrs={'class': 'ui selection dropdown'}
+                attrs={'class': 'ui small selection dropdown'}
                 ),
-            'version': forms.NumberInput(attrs={'class': 'ui input'}),
-            'vigencia': forms.DateInput(format=('%d/%m/%Y'), attrs={'class': 'ui calendar', 'id': 'calendario', 'type': 'date'}),
+            'version': forms.NumberInput(attrs={'class': 'ui small input'}),
+            'vigencia': forms.DateInput(format=('%d/%m/%Y'), attrs={'class': 'ui small calendar', 'id': 'calendario', 'type': 'date'}),
         }

@@ -11,6 +11,6 @@ class AmbitoFormUpdate(forms.ModelForm):
         fields = ['funcionario']
         widgets = {
             'funcionario': forms.Select(
-                attrs={'class': 'ui selection dropdown'}
+                attrs={'class': 'ui small selection dropdown'}
                 ),
         }
